@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}To jest tytul bazowy {% endblock %}</title>
+    <link href="{% static 'blog/styles/style.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<h1>A to jest zawsze</h1>
+
+
+{% block body %}
+Tu jest testowy napis
+{% endblock %}
+
+
+
+</body>
+</html>

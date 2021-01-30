@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block body %}
+    {% include "blog/calendar.html" %}
+
+    <form action="{% url 'send_email' %}" method="GET">
+        <lable id="subject"> temat zapytania</lable> <input type="text" id="subject" name="subject"><br>
+        <lable id="body"> tresc </lable> <textarea id="body" name="body"> </textarea> <br>
+        <input type="submit" id="submit" value="wyslij">
+    </form>
+    <br>
+    <br>
+
+{% endblock %}
+

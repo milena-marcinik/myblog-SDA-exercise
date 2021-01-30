@@ -1,0 +1,22 @@
+<table>
+    <thead>
+    <tr>
+        <td> Po </td>
+        <td> Wt </td>
+        <td> Sr </td>
+        <td> Cz </td>
+        <td> Pt </td>
+        <td> So </td>
+        <td> Ni </td>
+    </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr>
+            {% for col in row %}
+                <td {% if forloop.last %} style="color: crimson" {% endif %}>  {{ col|default:"" }} </td>
+                {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

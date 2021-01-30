@@ -1,0 +1,5 @@
+<h1>Wszystkie artykuly</h1>
+{% for entry in data %}
+<a href="{% url 'show_entry' entry.id %}"> {{ entry.title }} </a> {{ entry.publication_datetime|date:"Y-m-d H:m:s" }} <br>
+
+{% endfor %}

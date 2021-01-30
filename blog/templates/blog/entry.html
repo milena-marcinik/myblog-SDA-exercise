@@ -1,0 +1,6 @@
+<h1> {{ object.title }}</h1>
+<p>Opublikowano: {{ object.publication_datetime|date:"Y-m-d H:m:s" }}</p>
+<p>{{ object.body }}</p>
+
+<hr>
+<a href="{% url 'all_entries' %}"> Powrot do listy</a>
