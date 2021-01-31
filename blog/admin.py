@@ -15,8 +15,7 @@ class EntryAdmin(admin.ModelAdmin):  # klasa bedzie decydowala o tym jak w admin
     # fields = (('title', 'category'),)  # jakie pola w edycji chce pokazac
     fieldsets = (("Naglowek 1", {'description': "To jest jakis opis do naglowka 1", "fields": ('title', 'category')}),
                  ("Naglowek 2", {'description': "To jest jakis opis do naglowka 2", "fields": ('tags',)}),
-
-    )
+                 )
 
 
 # admin.site.register(Entry, EntryAdmin)

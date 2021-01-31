@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog'
+    'blog',  # standardowa difoltowa konfiguracja
+    # 'blog.apps.BlogConfig'  # tutaj wyraznie sie mowi skad ma zadzialac
 ]
 
 MIDDLEWARE = [
