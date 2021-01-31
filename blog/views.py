@@ -3,13 +3,13 @@ import calendar
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 
 # Create your views here.
 from django.urls import reverse
 
-from blog.models import Entry
+from blog.models import Entry, Category
 
 
 def get_calendar(year, month):
@@ -73,3 +73,26 @@ def show_entry(request, entry_id):
         raise Http404
     ctx = {'object': entry}
     return render(request=request, template_name="blog/entry.html", context=ctx)
+
+
+def niedziela(request):
+    entries = Entry.objects.all().order_by('-publication_datetime')[:3]
+    categories = Category.objects.all().order_by('name')
+    ctx = {'entries': entries, 'categories': categories}
+    return render(request=request, template_name="blog/niedziela.html", context=ctx)
+
+
+def entry_detail(request, entry_id):
+    try:
+        entry = Entry.objects.get(id=entry_id)
+    except ObjectDoesNotExist:
+        return Http404
+    return render(request=request, template_name='blog/entry_detail.html', context={'object': entry})
+
+
+def category_detail(request, category_id):
+    try:
+        category = Category.objects.get(id=category_id)
+    except ObjectDoesNotExist:
+        return Http404
+    return render(request=request, template_name='blog/category_detail.html', context={'object': category})
