@@ -10,5 +10,6 @@ urlpatterns = [
     path('wpisy/', views.all_entries, name="all_entries"),
     path('wpisy/<int:entry_id>', views.show_entry, name="show_entry"),
     path('niedziela/', views.niedziela, name='niedziela'),
-    path('niedziela/entry/<int:entry_id>', views.entry_detail, name="entry_detail")
+    path('niedziela/entry/<int:entry_id>', views.entry_detail, name="entry_detail"),
+    path('contact/', views.contact)
 ]

@@ -2,7 +2,7 @@ import datetime
 import calendar
 
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 
 
@@ -10,6 +10,28 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
 from blog.models import Entry, Category
+from .forms import ContactForm
+
+
+def contact(request):
+    msg = ""
+    # print(request.method)  # zwraca info o tym jaka metoda poszlo zpaytanie
+    if request.method == "POST":
+        form = ContactForm(request.POST)  # do mojego formularza wysylam dane ktore byly wyslane z posta
+        if form.is_valid():  # odpala caly mechanizm sprawdzenia danych
+            cleaned_data = form.cleaned_data
+            # msg = "Dziekuje bardzo za wypelnienie formularza!"
+            # form = ContactForm()
+            new_url = reverse('contact')
+            new_url = new_url + "?success=True"
+            return HttpResponseRedirect(new_url)
+    else:
+        if request.GET.get('success', False):
+            msg = "Dziekuje bardzo za wypelnienie formularza!"
+        form = ContactForm()
+
+    ctx = {'form': form, 'success_msg': msg}
+    return render(request=request, template_name="blog/contact_form.html", context=ctx)
 
 
 def get_calendar(year, month):

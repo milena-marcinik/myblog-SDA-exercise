@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% block body %}
+
+    {% if success_msg %}
+    <div class="form_success">
+        {{ success_msg }}
+
+    </div>
+    {% endif %}
+<form action="" method="POST" novalidate>
+<table class="myform">
+{{ form }}
+    <tr><td><td><input type="submit" value="wyslij"></td></tr>
+</table>
+    {%  csrf_token %}
+</form>
+
+    <hr>
+    <hr>
+
+    {{ form.non_field_errors }}
+    {{ form.yourname.errors }}
+    {{ form.yourname }}
+    {{ form.yourname.label }}
+{% endblock %}
