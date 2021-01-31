@@ -8,9 +8,14 @@ from django.core.exceptions import ValidationError
 #     raise ValidationError("nie tak szybko!")
 from django.forms import ModelForm
 
+from blog.models import Entry
+
 
 class EntryForm(ModelForm):
-    
+    class Meta:
+        model = Entry
+        fields = '__all__'  # wyswietl wszystkei pola ktore maja sie pojawic w formularzu
+
 
 class ContactForm(forms.Form):
     required_css_class = "required"

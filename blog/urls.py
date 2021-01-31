@@ -13,5 +13,5 @@ urlpatterns = [
     path('niedziela/entry/<int:entry_id>', views.entry_detail, name="entry_detail"),
     path('contact/', views.contact),
     path('category/create', views.category_create, name='category_create'),
-    path('category/<int:category_id>/update', views.category_update, name='category_update')
+    path('category/<int:category_id>/update', views.category_update, name='category_update'),
 ]

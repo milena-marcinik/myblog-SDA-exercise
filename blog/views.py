@@ -26,6 +26,18 @@ def category_update(request, category_id):
     return render(request=request, template_name='blog/form.html', context={'form': form, 'submit_value': "Update"})
 
 
+def entry_create(request):
+    if request.method == "POST":
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            object.name = form.cleaned_data['name']
+            object.save()
+            return HttpResponseRedirect(reverse('niedziela'))
+    else:
+        form = CategoryForm({'name': object.name})
+    return render(request=request, template_name='blog/form.html', context={'form': form, 'submit_value': "Update"})
+
+
 def category_create(request):
     if request.method == "POST":
         form = CategoryForm(request.POST)
