@@ -10,7 +10,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
 from blog.models import Entry, Category
-from .forms import ContactForm
+from .forms import ContactForm, SearchForm
 
 
 def contact(request):
@@ -99,8 +99,15 @@ def show_entry(request, entry_id):
 
 def niedziela(request):
     entries = Entry.objects.all().order_by('-publication_datetime')[:3]
+    if request.method == 'GET':
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            entries = Entry.objects.filter(title__icontains=form.cleaned_data['search'])
+
     categories = Category.objects.all().order_by('name')
-    ctx = {'entries': entries, 'categories': categories}
+    form = SearchForm()
+
+    ctx = {'entries': entries, 'categories': categories, 'form': form}
     return render(request=request, template_name="blog/niedziela.html", context=ctx)
 
 
