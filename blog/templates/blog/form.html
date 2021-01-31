@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+
+
+{% block body %}
+
+<form action="" method="POST" novalidate>
+<table class="myform">
+{{ form }}
+    <tr><td><td><input type="submit" value="Dodaj"></td></tr>
+</table>
+    {%  csrf_token %}
+</form>
+
+{%  endblock %}

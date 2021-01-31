@@ -6,6 +6,11 @@ from django.core.exceptions import ValidationError
 #     print("walidujemy sobie")
 #     print(value)
 #     raise ValidationError("nie tak szybko!")
+from django.forms import ModelForm
+
+
+class EntryForm(ModelForm):
+    
 
 class ContactForm(forms.Form):
     required_css_class = "required"
@@ -28,4 +33,11 @@ class ContactForm(forms.Form):
 
 
 class SearchForm(forms.Form):
-    search = forms.CharField(label="Szukaj")
+    search = forms.CharField(label="Szukaj", required=False)
+
+
+class CategoryForm(forms.Form):
+    search = forms.CharField(label="Nazwa kategorii")
+
+
+
