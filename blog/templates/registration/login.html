@@ -1,0 +1,7 @@
+<form action="{% url 'login' %}" method="POST" novalidate>
+    <table>
+        {{ form }}
+        <tr><td><td><input type="submit" value="login" name="login"></td></tr>
+    </table>
+    {%  csrf_token %}
+</form>

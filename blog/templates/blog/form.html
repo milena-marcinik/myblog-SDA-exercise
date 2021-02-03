@@ -1,10 +1,12 @@
 {% extends "blog/base.html" %}
+
 {% block body %}
-<form action="" method="GET" novalidate>
+<form action="" method="POST" novalidate>
 <table class="myform">
 {{ form }}
     <tr><td></td><td><input type="submit" value="{{ submit_value }}"></td></tr>
 </table>
     {% csrf_token %}
 </form>
+
 {% endblock %}

@@ -42,7 +42,7 @@ class SearchForm(forms.Form):
 
 
 class CategoryForm(forms.Form):
-    search = forms.CharField(label="Nazwa kategorii")
+    name = forms.CharField(label="Nazwa kategorii")
 
 
 

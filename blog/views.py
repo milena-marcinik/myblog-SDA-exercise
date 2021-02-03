@@ -5,28 +5,15 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 
-
 # Create your views here.
 from django.urls import reverse
 
 from blog.models import Entry, Category
-from .forms import ContactForm, SearchForm, CategoryForm
+from .forms import ContactForm, SearchForm, CategoryForm, EntryForm
 
 
 def category_update(request, category_id):
     object = get_object_or_404(Category, id=category_id)
-    if request.method == "POST":
-        form = CategoryForm(request.POST)
-        if form.is_valid():
-            object.name = form.cleaned_data['name']
-            object.save()
-            return HttpResponseRedirect(reverse('niedziela'))
-    else:
-        form = CategoryForm({'name': object.name})
-    return render(request=request, template_name='blog/form.html', context={'form': form, 'submit_value': "Update"})
-
-
-def entry_create(request):
     if request.method == "POST":
         form = CategoryForm(request.POST)
         if form.is_valid():
@@ -46,6 +33,17 @@ def category_create(request):
             return HttpResponseRedirect(reverse('niedziela'))
     else:
         form = CategoryForm()
+    return render(request=request, template_name='blog/form.html', context={'form': form, 'submit_value': "Create"})
+
+
+def entry_create(request):
+    if request.method == "POST":
+        form = EntryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('niedziela'))
+    else:
+        form = EntryForm()
     return render(request=request, template_name='blog/form.html', context={'form': form, 'submit_value': "Create"})
 
 
