@@ -4,12 +4,23 @@ import calendar
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
-
-# Create your views here.
 from django.urls import reverse
+from django.views.generic.base import View, RedirectView
 
 from blog.models import Entry, Category
 from .forms import ContactForm, SearchForm, CategoryForm, EntryForm
+
+
+# class MyRedirectView(RedirectView):
+#     def get_redirect(self, ...):
+
+
+
+
+
+class MyView(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse("Przyklad mojego widoku")
 
 
 def category_update(request, category_id):

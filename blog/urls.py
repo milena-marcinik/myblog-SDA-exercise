@@ -14,4 +14,6 @@ urlpatterns = [
     path('contact/', views.contact),
     path('category/create', views.category_create, name='category_create'),
     path('category/<int:category_id>/update', views.category_update, name='category_update'),
+    path('cbv/myview/', views.MyView.as_view(), name='hello'),
+    # path('cbv/redirect/', RedirectView.as_view(pattern='hello'))
 ]
